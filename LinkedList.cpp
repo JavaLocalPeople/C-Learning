@@ -1,4 +1,4 @@
-// For now I have functions for inserting at the begin and at the end.
+// For now I have functions for inserting at the beginning, inserting at the end and delete at the beginning.
 
 #include <iostream>
 
