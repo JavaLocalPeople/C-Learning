@@ -1,4 +1,5 @@
-// For now I have functions for inserting at the beginning, inserting at the end and delete at the beginning.
+// For now I have functions for inserting Node at the beginning, inserting Node at the end, delete Node at the beginning, 
+//delete Node at the end. 
 
 #include <iostream>
 
@@ -22,13 +23,32 @@ void deleteBeg(Node** head)
 	// int value = 0;
 	if (*head == NULL)
 	{
-		cout << "There is no Node, sorry sir cannot delete more in the beginning." << endl;
+		cout << "There is no Node, sorry sir you cannot delete more in the beginning." << endl;
 	}
 	else {
 		Node* temp = *head;
 		// value = temp->data;
 		*head = (*head)->link;
 		free(temp);
+	}
+}
+
+void deleteEnd(Node** head)
+{
+	int value = 0;
+	if (*head == NULL)
+	{
+		cout << "There is no Node, sorry sir you cannot delete more in the end." << endl;
+	} else {
+		Node *ptr, *prev;
+		ptr = *head;
+		while (ptr->link != NULL)
+		{
+			prev = ptr;
+			ptr = ptr->link;
+		}
+		prev->link = NULL;
+		free(ptr);
 	}
 }
 
@@ -76,7 +96,10 @@ int main()
 	insertBeg(&head, 5);
 	printList(head); // output 5 3 4 2 1
 	deleteBeg(&head);
-	cout << "After deleting the beginning Node" << endl;
+	cout << "After deleting Node in the beginning" << endl;
 	printList(head); // output 3 4 2 1
+	deleteEnd(&head);
+	cout << "After deleting Node in the end" << endl;
+	printList(head); // output 3 4 2
 }
 
