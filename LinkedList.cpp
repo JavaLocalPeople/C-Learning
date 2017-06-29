@@ -17,6 +17,21 @@ void insertBeg(Node** head, int d)
 	*head = ptr;
 }
 
+void deleteBeg(Node** head)
+{
+	// int value = 0;
+	if (*head == NULL)
+	{
+		cout << "There is no Node, sorry sir cannot delete more in the beginning." << endl;
+	}
+	else {
+		Node* temp = *head;
+		// value = temp->data;
+		*head = (*head)->link;
+		free(temp);
+	}
+}
+
 void insertEnd(Node** head, int d)
 {
 	Node *ptr = new Node();
@@ -60,5 +75,8 @@ int main()
 	insertEnd(&head, 1);
 	insertBeg(&head, 5);
 	printList(head); // output 5 3 4 2 1
+	deleteBeg(&head);
+	cout << "After deleting the beginning Node" << endl;
+	printList(head); // output 3 4 2 1
 }
 
