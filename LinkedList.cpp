@@ -2,6 +2,7 @@
 - inserting Node at the beginning, inserting Node at the end.
 - delete Node at the beginning, delete Node at the end. 
 - return true/false for searching specific value.
+- find the middle value of the Node. 
 */
 
 #include <iostream>
@@ -108,6 +109,29 @@ bool searchValue(Node** head, int inputValue) {
 	}
 }
 
+// find and return the value of the middle Nodes in LinkedList
+// Odd size of LinkedList return middle, even size of LinkedList return the second one
+//of the middle. (optional task) could return (n/2) + 1 and (n/2) - 1 
+int findMiddleElement(Node** head)
+{
+	Node *slow = *head;
+	Node *fast = *head;
+	if (*head == NULL) // no Node condition
+	{
+		cout << "Sorry, there is no Node in your LinkedList." << endl;
+
+		return -1;
+	} else {
+		while (fast != NULL && fast->link != NULL) {
+			slow = slow->link;
+			fast = fast->link->link;
+		}
+		cout << "The middle value in your Linked List is " << slow->data << endl;
+		return slow->data;
+	}
+}
+
+
 // display Nodes in the order
 void printList(struct Node* head)
 {
@@ -134,13 +158,22 @@ int main()
 	insertEnd(&head, 1);
 	insertBeg(&head, 5);
 	printList(head); // output 5 3 4 2 1
+	
 	deleteBeg(&head);
 	cout << "After deleting Node in the beginning" << endl;
 	printList(head); // output 3 4 2 1
+	
 	deleteEnd(&head);
 	cout << "After deleting Node in the end" << endl;
 	printList(head); // output 3 4 2
+	
 	searchValue(&head, 2); // output true
 	searchValue(&head, 8); // output false
+	
+	findMiddleElement(&head); // output 4
+	insertBeg(&head, 6); 
+	printList(head);// output 6 3 4 2
+	findMiddleElement(&head); // output 4
+	
 }
 
