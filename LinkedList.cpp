@@ -1,6 +1,7 @@
 /* For now I have functions for LinkedList 
 - inserting Node at the beginning, inserting Node at the end.
 - delete Node at the beginning, delete Node at the end. 
+- return true/false for searching specific value.
 */
 
 #include <iostream>
@@ -12,6 +13,7 @@ struct Node {
 	Node* link;
 };
 
+// insert Node in the beginning
 void insertBeg(Node** head, int d)
 {
 	Node *ptr = new Node();
@@ -20,6 +22,7 @@ void insertBeg(Node** head, int d)
 	*head = ptr;
 }
 
+// delete Node in the beginning
 void deleteBeg(Node** head) 
 {
 	// int value = 0;
@@ -35,6 +38,7 @@ void deleteBeg(Node** head)
 	}
 }
 
+// delete Node in the end
 void deleteEnd(Node** head)
 {
 	Node *ptr, *prev;
@@ -59,6 +63,7 @@ void deleteEnd(Node** head)
 	}
 }
 
+// insert Node in the end
 void insertEnd(Node** head, int d)
 {
 	Node *ptr = new Node();
@@ -77,13 +82,40 @@ void insertEnd(Node** head, int d)
 	}
 }
 
+// search specific value in the LinkedList, return true/false
+bool searchValue(Node** head, int inputValue) {
+	if (*head == NULL) // no Node condition
+	{
+		cout << "Sorry, there is no Node in your LinkedList." << endl;
+		cout << "Your search for " << inputValue << " is false" << endl;
+
+		return false;
+	}
+	else {
+		Node *ptr = new Node();
+		ptr = *head;
+		while (ptr != NULL)
+		{
+			if (ptr->data == inputValue)
+			{
+				cout << "Your search for " << inputValue << " is true" << endl;
+				return true;
+			}
+			ptr = ptr->link;
+		}
+		cout << "Your search for " << inputValue << " is false" << endl;
+		return false;
+	}
+}
+
+// display Nodes in the order
 void printList(struct Node* head)
 {
 
 	Node *n = head;
 	if (n == NULL) // no Node condition
 	{
-		cout << "Too bad, no Node and please insert something first." << endl;
+		cout << "Too bad, no Node in your LinkedList and please insert something first." << endl;
 	}
 	while (n != NULL)
 	{
@@ -108,5 +140,7 @@ int main()
 	deleteEnd(&head);
 	cout << "After deleting Node in the end" << endl;
 	printList(head); // output 3 4 2
+	searchValue(&head, 2); // output true
+	searchValue(&head, 8); // output false
 }
 
