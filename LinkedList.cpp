@@ -20,10 +20,10 @@ void insertBeg(Node** head, int d)
 	*head = ptr;
 }
 
-void deleteBeg(Node** head)
+void deleteBeg(Node** head) 
 {
 	// int value = 0;
-	if (*head == NULL)
+	if (*head == NULL) // no Node condition
 	{
 		cout << "There is no Node, sorry sir you cannot delete more in the beginning." << endl;
 	}
@@ -37,12 +37,16 @@ void deleteBeg(Node** head)
 
 void deleteEnd(Node** head)
 {
-	int value = 0;
-	if (*head == NULL)
+	Node *ptr, *prev;
+	// int value = 0; for return value
+	if (*head == NULL) // no Node condition
 	{
 		cout << "There is no Node, sorry sir you cannot delete more in the end." << endl;
+	} else if ((*head)->link == NULL) { // only have 1 Node
+		ptr = *head;
+		*head = NULL;
+		free(ptr);
 	} else {
-		Node *ptr, *prev;
 		ptr = *head;
 		while (ptr->link != NULL)
 		{
@@ -50,6 +54,7 @@ void deleteEnd(Node** head)
 			ptr = ptr->link;
 		}
 		prev->link = NULL;
+		// value = ptr->data;
 		free(ptr);
 	}
 }
@@ -59,7 +64,7 @@ void insertEnd(Node** head, int d)
 	Node *ptr = new Node();
 	ptr->data = d;
 	ptr->link = NULL;
-	if (*head == NULL)
+	if (*head == NULL) // no Node condition
 	{
 		*head = ptr;
 	} else {
@@ -76,7 +81,7 @@ void printList(struct Node* head)
 {
 
 	Node *n = head;
-	if (n == NULL)
+	if (n == NULL) // no Node condition
 	{
 		cout << "Too bad, no Node and please insert something first." << endl;
 	}
