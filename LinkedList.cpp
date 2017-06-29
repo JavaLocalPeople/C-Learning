@@ -1,5 +1,7 @@
-// For now I have functions for inserting Node at the beginning, inserting Node at the end, delete Node at the beginning, 
-//delete Node at the end. 
+/* For now I have functions for LinkedList 
+- inserting Node at the beginning, inserting Node at the end.
+- delete Node at the beginning, delete Node at the end. 
+*/
 
 #include <iostream>
 
