@@ -4,6 +4,7 @@
 - return true/false for searching specific value.
 - find the middle value of the Node. 
 - reverse the whole LinkedList.
+- detect whether the LinkedList has a cycle.
 */
 
 #include <iostream>
@@ -169,6 +170,31 @@ void printList(struct Node* head)
 		n = n->link;
 	}
 
+}
+
+// find out whether the LinkedList has a cycle
+bool hasCycle(Node** head)
+{
+	Node *n = *head;
+	if (n == NULL) {
+		cout << "Nothing you could detect in an empty LinkedList" << endl;
+		return false;
+	}
+	else {
+		Node *fast = (*head)->link;
+		Node *slow = *head;
+		while (fast != NULL && fast->link != NULL) {
+			if (fast == slow)
+			{
+				cout << "This LinkedList has a cycle" << endl;
+				return true;
+			}
+			fast = fast->link->link;
+			slow = slow->link;
+		}
+		cout << "This LinkedList has no cycle" << endl;
+		return false;
+	}
 }
 
 int main()
