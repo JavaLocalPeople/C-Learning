@@ -3,6 +3,7 @@
 - delete Node at the beginning, delete Node at the end. 
 - return true/false for searching specific value.
 - find the middle value of the Node. 
+- reverse the whole LinkedList.
 */
 
 #include <iostream>
@@ -131,6 +132,27 @@ int findMiddleElement(Node** head)
 	}
 }
 
+// reverse the current LinkedList by using three Nodes pointer 
+void reverseLinkedList(Node** head)
+{
+	if (*head == NULL) // no Node condition, more like just letting user know. 
+	{
+		cout << "Nothing you could reverse in an empty LinkedList" << endl;
+	} else {
+		Node *cur = *head;
+		Node *next = new Node();
+		Node *pre = NULL;
+		while (cur != NULL)
+		{
+			next = cur->link;
+			cur->link = pre;
+			pre = cur;
+			cur = next; 
+		}
+		*head = pre;
+	}
+}
+
 
 // display Nodes in the order
 void printList(struct Node* head)
@@ -175,5 +197,7 @@ int main()
 	printList(head);// output 6 3 4 2
 	findMiddleElement(&head); // output 4
 	
+	reverseLinkedList(&head);
+	printList(head); // output 2 4 3 6
 }
 
