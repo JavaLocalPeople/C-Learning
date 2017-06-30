@@ -1,4 +1,4 @@
-/* For now I have functions for this single LinkedList 
+/* For now I have functions for this LinkedList 
 - inserting Node at the beginning, inserting Node at the end.
 - delete Node at the beginning, delete Node at the end. 
 - return true/false for searching specific value.
