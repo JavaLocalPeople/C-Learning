@@ -1,6 +1,7 @@
 
 #include <iostream>
 
+
 template<class T>
 class Node
 {
@@ -11,7 +12,7 @@ public:
 	Node<T>(const Node<T>& copyNode) : data(copyNode.data), next() {}
 
 private:
-	Node<T>& operator=(const Node<T>&);
+	// Node<T>& operator=(const Node<T>&);
 };
 
 template<class T>
@@ -19,8 +20,8 @@ class LinkedList
 {
 
 public:
-	LinkedList(const LinkedList& LL);
-	LinkedList& operator=(LinkedList byValList);
+	// LinkedList(const LinkedList& LL);
+	// LinkedList& operator=(LinkedList byValList);
 	LinkedList() : head(NULL), tail(NULL) {}
 	LinkedList(Node<T> * newNode) : head(newNode), tail(newNode) {}
 	~LinkedList();
@@ -29,9 +30,9 @@ public:
 	Node<T> * tail;
 
 	void insertBeg(T val);
-	void insertEnd(T val);
+	// void insertEnd(T val);
 	void print();
-	void printBackwards();
+	// void printBackwards();
 	
 };
 
@@ -54,10 +55,6 @@ void LinkedList<T>::insertBeg(T val)
 	Node<T> *newNode = new Node<T>(val);
 	newNode->next = head;
 	head = newNode;
-	if (head->next == NULL)
-	{
-		tail = newNode;
-	}
 }
 
 template<class T>
