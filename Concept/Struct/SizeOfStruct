@@ -1,0 +1,13 @@
+struct Employee
+{
+    short id; // 2
+    int age; // 4
+    double wage; // 8
+};
+ 
+int main()
+{
+    std::cout << "The size of Employee is " << sizeof(Employee) << "\n"; // 14
+ 
+    return 0;
+}
