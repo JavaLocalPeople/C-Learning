@@ -27,3 +27,4 @@ public:
 };
 
 #endif // !CREATURE_H
+/
