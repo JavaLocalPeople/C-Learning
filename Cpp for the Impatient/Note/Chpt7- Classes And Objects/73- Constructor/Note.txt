@@ -1,1 +1,59 @@
 - if you write at least one constructor of any kind, the compiler does not supply a default constructor
+
+- void print_trip(Triplet t) {
+     cout "a: " << t.a << end;
+     cout "b: " << t.b << end;
+     cout "c: " << t.c << end;
+}
+
+Because the constructor Triplet(int) takes a single integer argument, it implicitly defines a conversion function, enabling an integer to be used wherever a Triplet object is expected. So the following would be legal.
+print_trip(100);   // Convert 100 to a Triplet and then print.
+
+-  modifying a constructor with the explicit keyword prevents the constructor from working as a conversion function.
+
+- usage for Constructor Initialization Lists
+        - #include <string>
+
+        class Dog {
+        public:
+             const int gender;   // male = 1, female = 0
+             int age;
+             string name
+             Dog(int m_f, int a, string nm) :
+                  gender(m_f), age(a), name(nm) { }
+        };
+        
+        - class Funny_class {
+        public:
+             int i;
+             int &ref_i;
+             Funny_class() : i(0), ref_i(i) { }
+        };
+        
+        - limitation:
+        #include <cstring>  // Support C-string library functions
+
+        class Dog {
+        public:
+             const int gender;   // male = 1, female = 0
+             int age;
+             char name[21];
+             Dog(int m_f, int a, char *nm) : gender(m_f), age(a)
+                  { strncpy(name, nm, 20); }
+        };
+        
+- Delegated Constructor (C++11)
+        - EmpRec(string n_name) : EmpRec(0, 0, n_name) {}
+          EmpRec() : EmpRec(0, 0) {}
+          
+- Default Member Initialization (C++11)         
+        Point {
+        public:
+             double x = 0.0;
+             double y = 0.0;
+             // Point() constructor: x and y get 0.0
+             Point () {}
+             // Point(double, double) constructor: still works!
+             Point (double new_x, double new_y)
+                 : x(new_x), y(new_y) { }
+        };
