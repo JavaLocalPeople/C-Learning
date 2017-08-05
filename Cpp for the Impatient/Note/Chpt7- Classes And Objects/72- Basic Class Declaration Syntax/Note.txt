@@ -1,0 +1,56 @@
+- syntax on using pointers to set value: pointer->member == (*pointer).member
+
+- Inline function:
+        - optimize runtime performance
+        - large function occupy more memory space
+        - no recursion
+          
+- Define member function outside its class declaration:
+        - write arbitrarily long functions without burdening the class declaration itself
+          
+- #include <cmath>
+
+void Point::set_x(double newx)  {
+    x = fabs(newx); // return absolute value
+}
+
+- Although objects of the same class contain their own data settings(own copy of the data members), they share all the same function code.
+
+- The difference between private and protected is relevant only where subclassing is involved
+
+- class inside of a class (restrictions)
+        - A class cannot contain an instance of itself.
+        - Classes cannot mutually contain each other. For example, if class A contains an instance of class B, then B cannot contain an instance of A.
+
+- 
+////
+class Data_node;     // These are partial declarations,
+class String_node;   //  solving the forward-ref problem.
+
+class Data_node {
+public:
+     double x;
+     String_node  *ptr_to_string_node;
+};
+
+class String_node {
+public:
+     char str[20];
+     Data_node  *ptr_to_data_node;
+};
+////
+
+class Point {
+public:
+     static int npoints;  // Declares npoints as member.
+     double x, y;
+}
+int Point::npoints = 0;  // This defines npoints.
+
+////
+
+- A variable that is declared both const and static can be declared just once
+
+- Data members shared by all objects of the same class. Such a data member is static.
+
+- ust const static variable as a object tracker
