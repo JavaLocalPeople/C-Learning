@@ -1,0 +1,5 @@
+- a pointer to a derived type cannot point to an object of the base type.
+
+- C++11 provides the override keyword, which is self-documenting and helps to prevent such confusing errors.
+function_declaration override;
+
